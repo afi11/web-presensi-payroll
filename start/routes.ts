@@ -20,4 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get("/", "HomeController.index").as("home");
+Route.group(() => {
+  Route.get("/", "HomeController.index").as("home");
+}).middleware("auth");
+
+Route.on('register').render('auth.register')
+Route.post('register', 'AuthController.register')
+Route.on("login").render("auth.login");
+Route.post("/login", "AuthController.login");
+Route.post("/logout", "AuthController.logout").as("logout");

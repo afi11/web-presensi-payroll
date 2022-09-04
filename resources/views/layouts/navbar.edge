@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
                             href="#" data-toggle="dropdown"><span
-                                class="mr-1 user-name text-bold-700">User</span><span
+                                class="mr-1 user-name text-bold-700">{{ auth.user.username }}</span><span
                                 class="avatar avatar-online"><img
                                     src="https://storage.googleapis.com/asset-santara/santara.co.id/images/error/no-image-user-small.png"
                                     alt="avatar"><i></i></span></a>
@@ -35,8 +35,8 @@
                                 onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();"><i
                                     class="ft-power"></i> Logout</a>
-                            <form id="logout-form" action="#" method="POST" class="d-none">
-                                {{--  @csrf  --}}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                {{ csrfField() }}
                             </form>
                         </div>
                     </li>
